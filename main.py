@@ -61,7 +61,7 @@ while True:
         result = ""
         while True:
             print("Admin\n")
-            menu = ""
+            menu = "1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Deposit to a user\n6. Withdraw from a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
             inp = "Enter a number (1 , 5): "
             inp = print_menu(menu , inp , result)
             if inp == "1":
@@ -72,7 +72,21 @@ while True:
                 pass
             elif inp == "4":
                 pass
+            elif inp == "5":
+                pass
+            elif inp == "6":
+                pass
+            elif inp == "7":
+                pass
+            elif inp == "8":
+                pass
+            elif inp == "9":
+                pass
+            elif inp == "10":
+                pass
+            elif inp == "11":
+                pass
             else:
-                result = f"'{inp}' is not defind!!!"
+                result = f"'{inp}' is not defined!!!"
     else:
         pass
