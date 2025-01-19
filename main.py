@@ -6,6 +6,7 @@ clearcommand = "clear" # if you are useing mac or linux: 'clear' / if you are us
 
 users_list = []
 account_number_list = [] # this list added for search easy with account numbers
+usernames_list = []
 
 def print_menu(menu , inp , result , is_numeric = False):
     system(clearcommand)
@@ -59,6 +60,7 @@ class User:
         self.budget = int(budget)
         users_list.append(self)
         account_number_list.append(self.account_number)
+        usernames_list.append(self.username)
     def show_info(self):
         return f"Name: {self.name}\nAccount number: {self.account_number}\nBudget: {self.budget}"
     def check_budget(self):
@@ -86,17 +88,16 @@ while True:
             print("Admin\n")
             menu = "1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Deposit to a user\n6. Withdraw from a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
             inp = "Enter a number (1 , 5): "
-            inp = print_menu(menu , inp , result)
+            inp = print_menu(menu , inp , result , is_numeric=True)
             if inp == "1":
-                while True:
-                    print("  .:.Adding a user.:.")
-                    name = input("Enter a name: ")
-                    username = input("Enter a username: ")
-                    password = input("Enter a password: ")
-                    account_number = input("Enter an account number: ")
-                    budget = input("Enter a number for budget: ")
-                    if name == "" or 
-                
+                print("  .:.Adding a user.:.")
+                name = get_correct_value("Enter a name: ")
+                username = get_correct_value("Enter a username: " , usernames_list)
+                password = get_correct_value("Enter a password: " , is_numeric = True)
+                account_number = get_correct_value("Enter an account number: " , account_number_list , is_numeric = True)
+                budget = int(get_correct_value("Enter a number for budget: " , is_numeric=True))
+                User(name , username , password , account_number , budget)
+
             elif inp == "2":
                 pass
             elif inp == "3":
