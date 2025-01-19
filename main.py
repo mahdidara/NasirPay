@@ -88,8 +88,9 @@ while True:
             print("Admin\n")
             menu = "1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Deposit to a user\n6. Withdraw from a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
             inp = "Enter a number (1 , 5): "
-            inp = print_menu(menu , inp , result , is_numeric=True)
+            inp = print_menu(menu , inp , result)
             if inp == "1":
+                system(clearcommand)
                 print("  .:.Adding a user.:.")
                 name = get_correct_value("Enter a name: ")
                 username = get_correct_value("Enter a username: " , usernames_list)
@@ -97,7 +98,7 @@ while True:
                 account_number = get_correct_value("Enter an account number: " , account_number_list , is_numeric = True)
                 budget = int(get_correct_value("Enter a number for budget: " , is_numeric=True))
                 User(name , username , password , account_number , budget)
-
+                result = f"{name} added."
             elif inp == "2":
                 pass
             elif inp == "3":
@@ -111,7 +112,11 @@ while True:
             elif inp == "7":
                 pass
             elif inp == "8":
-                pass
+                system(clearcommand)
+                print("  .:.All users.:.")
+                result = ""
+                for i in users_list:
+                    result += i.show_info() + "-"*10 + "\n"
             elif inp == "9":
                 pass
             elif inp == "10":
