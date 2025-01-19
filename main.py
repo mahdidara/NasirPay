@@ -23,6 +23,28 @@ def print_menu(menu , inp , result , is_numeric = False):
     i = input(inp)
     return i
 
+def get_correct_value(inp  , l = [] , is_numeric = False):
+    '''
+    baray check kardane in ke 
+    age karbar meghdare khali dad 
+    ya mighdar ghire adadi 
+    ya yek chiz tekrari vared kard 
+    dobare az karbar vorodi begirim
+    '''
+    while True:
+        i = input(inp)
+        if i == "":
+            print("You cannot give an empty value.")
+            continue
+        if not i.isnumeric() and is_numeric:
+            print("You must enter a number. Please try again.")
+            continue
+        if i in l:
+            print(f"'{i}' is a duplicate. Please try again.")
+            continue
+        return i
+            
+
 class User:
     account_number = ""
     username = ""
@@ -34,7 +56,7 @@ class User:
         self.username = username
         self.password = password
         self.account_number = account_number
-        self.budget = budget
+        self.budget = int(budget)
         users_list.append(self)
         account_number_list.append(self.account_number)
     def show_info(self):
@@ -52,7 +74,8 @@ class User:
         return True
 
 while True:
-    print(".:.Welcome to NasirPay.:.\n")
+    system(clearcommand)
+    print("  .:.Welcome to NasirPay.:.\n")
     print("(Login page)")
     u = input("Enter your username: ")
     p = input("Enter your password: ")
@@ -65,7 +88,15 @@ while True:
             inp = "Enter a number (1 , 5): "
             inp = print_menu(menu , inp , result)
             if inp == "1":
-                pass
+                while True:
+                    print("  .:.Adding a user.:.")
+                    name = input("Enter a name: ")
+                    username = input("Enter a username: ")
+                    password = input("Enter a password: ")
+                    account_number = input("Enter an account number: ")
+                    budget = input("Enter a number for budget: ")
+                    if name == "" or 
+                
             elif inp == "2":
                 pass
             elif inp == "3":
