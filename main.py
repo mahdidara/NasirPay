@@ -1,8 +1,28 @@
 # NasirPay
 # AmirMahdiDara
+from os import system
+
+clearcommand = "clear" # if you are useing mac or linux: 'clear' / if you are useing windows: 'cls'
 
 users_list = []
 account_number_list = [] # this list added for search easy with account numbers
+
+def print_menu(menu , inp , result , is_numeric = False):
+    system(clearcommand)
+    print("Result: ")
+    print(result)
+    print("-"*40)
+    print(menu)
+    if is_numeric:
+        while True:
+            try:
+                i = int(input(inp))
+                return i
+            except:
+                print("You must enter a number. Please try again.")
+    i = input(inp)
+    return i
+
 
 class User:
     account_number = ""
