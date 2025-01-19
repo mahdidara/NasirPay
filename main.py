@@ -57,6 +57,22 @@ while True:
     u = input("Enter your username: ")
     p = input("Enter your password: ")
     if u == 'admin' and p == 'kntu':
-        pass
+        system(clearcommand)
+        result = ""
+        while True:
+            print("Admin\n")
+            menu = ""
+            inp = "Enter a number (1 , 5): "
+            inp = print_menu(menu , inp , result)
+            if inp == "1":
+                pass
+            elif inp == "2":
+                pass
+            elif inp == "3":
+                pass
+            elif inp == "4":
+                pass
+            else:
+                result = f"'{inp}' is not defind!!!"
     else:
         pass
