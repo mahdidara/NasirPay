@@ -23,7 +23,6 @@ def print_menu(menu , inp , result , is_numeric = False):
     i = input(inp)
     return i
 
-
 class User:
     account_number = ""
     username = ""
@@ -51,4 +50,13 @@ class User:
         users_list[index].budget += num
         self.budget -= num
         return True
-    
+
+while True:
+    print(".:.Welcome to NasirPay.:.\n")
+    print("(Login page)")
+    u = input("Enter your username: ")
+    p = input("Enter your password: ")
+    if u == 'admin' and p == 'kntu':
+        pass
+    else:
+        pass
