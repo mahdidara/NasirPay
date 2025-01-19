@@ -18,3 +18,17 @@ class User:
         self.budget = budget
         users_list.append(self)
         account_number_list.append(self.account_number)
+    def show_info(self):
+        return f"Name: {self.name}\nAccount number: {self.account_number}\nBudget: {self.budget}"
+    def check_budget(self):
+        self.budget -= 1000
+        return f"budget: {self.budget}"
+    def fund_transfer(self , acc , num):
+        try:
+            index = account_number_list.index(acc)
+        except:
+            return False
+        users_list[index].budget += num
+        self.budget -= num
+        return True
+    
