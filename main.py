@@ -17,7 +17,7 @@ def print_menu(menu , inp , result , is_numeric = False):
     i = input(inp)
     return i
 
-def get_correct_value(inp  , l = [] , is_numeric = False):
+def get_correct_value(inp  , l = [] , is_numeric = False , find = False):
     '''
     baray check kardane in ke 
     age karbar meghdare khali dad 
@@ -33,9 +33,14 @@ def get_correct_value(inp  , l = [] , is_numeric = False):
         if not i.isnumeric() and is_numeric:
             print("You must enter a number. Please try again.")
             continue
-        if i in l:
+        if i in l and not find:
             print(f"'{i}' is a duplicate. Please try again.")
             continue
+        if find:
+            if i in l:
+                return l.index(i)
+            else:
+                return False
         return i
             
 
@@ -55,7 +60,7 @@ class User:
         account_number_list.append(self.account_number)
         usernames_list.append(self.username)
     def show_info(self):
-        return f"Name: {self.name}\nAccount number: {self.account_number}\nBudget: {self.budget}"
+        return f"Name: {self.name}\nAccount number: {self.account_number}\nBudget: {self.budget}\n"
     def check_budget(self):
         self.budget -= 1000
         return f"budget: {self.budget}"
@@ -84,7 +89,7 @@ while True:
             inp = print_menu(menu , inp , result)
             if inp == "1":
                 system(clearcommand)
-                print("  .:.Adding a user.:.")
+                print("  .:.Adding a user.:.\n")
                 name = get_correct_value("Enter a name: ")
                 username = get_correct_value("Enter a username: " , usernames_list)
                 password = get_correct_value("Enter a password: " , is_numeric = True)
@@ -93,7 +98,17 @@ while True:
                 User(name , username , password , account_number , budget)
                 result = f"{name} added."
             elif inp == "2":
-                pass
+                system(clearcommand)
+                print("  .:.Deleting an account.:.\n")
+                account_number_index = get_correct_value("Enter an account number: " , account_number_list , is_numeric=True , find=True)
+                if account_number_index is not False:
+                    users_list.pop(account_number_index)
+                    account_number_list.pop(account_number_index)
+                    usernames_list.pop(account_number_index)
+                    result = "Deleted."
+                else:
+                    result = "This account number does not exist!!!"
+
             elif inp == "3":
                 pass
             elif inp == "4":
