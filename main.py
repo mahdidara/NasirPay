@@ -14,13 +14,6 @@ def print_menu(menu , inp , result , is_numeric = False):
     print(result)
     print("-"*40)
     print(menu)
-    if is_numeric:
-        while True:
-            try:
-                i = int(input(inp))
-                return i
-            except:
-                print("You must enter a number. Please try again.")
     i = input(inp)
     return i
 
