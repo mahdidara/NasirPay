@@ -205,7 +205,11 @@ while True:
                 for i in users_list:
                     result += i.show_info() + "-"*10 + "\n"
             elif inp == "9":
-                pass
+                system(clearcommand)
+                total = 0
+                for i in users_list:
+                    total += i.budget
+                result = f"Total: {total}"
             elif inp == "10":
                 pass
             elif inp == "11":
