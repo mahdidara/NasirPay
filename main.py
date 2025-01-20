@@ -94,7 +94,13 @@ while True:
                 system(clearcommand)
                 print("  .:.Adding a user.:.\n")
                 name = get_correct_value("Enter a name: ")
-                username = get_correct_value("Enter a username: " , usernames_list)
+                username = "admin"
+                s = False
+                while username == 'admin':
+                    if s:
+                        print("The word admin is not acceptable. Please try again.")
+                    username = get_correct_value("Enter a username: " , usernames_list)
+                    s = True
                 password = get_correct_value("Enter a password: " , is_numeric = True)
                 account_number = get_correct_value("Enter an account number: " , account_number_list , is_numeric = True)
                 budget = int(get_correct_value("Enter a number for budget: " , is_numeric=True , min_lim=100000))
@@ -234,7 +240,17 @@ while True:
                     if inp == '1':
                         result = f"Balance: {user.budget}"
                     elif inp == '2':
-                        pass
+                        system(clearcommand)
+                        print("  .:.Transfer funds to another account.:.")
+                        account_number_index = get_correct_value("Enter an account number for transfer: " , account_number_list , is_numeric=True , find=True)
+                        if account_number_index is not False:
+                            max_limit = user.budget - 100000
+                            number = int(get_correct_value(f"Enter a number for transfer(max = {max_limit}): " , is_numeric=True , max_lim=max_limit))
+                            user.budget -= number
+                            users_list[account_number_index].budget += number
+                            result = "Done.\n" + f"Account balance: {user.budget}"
+                        else:
+                            result = "This account number does not exist!!!"
                     elif inp == '3':
                         pass
                     elif inp == '4':
