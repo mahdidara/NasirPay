@@ -165,7 +165,16 @@ while True:
                     else:
                         result = f"'{inp}' is not defined!!!"
             elif inp == "5":
-                pass
+                system(clearcommand)
+                print("  .:.Deposit to a user.:.")
+                account_number_index = get_correct_value("Enter an account number for Desposit: " , account_number_list , is_numeric=True , find=True)
+                if account_number_index is not False:
+                    max_limit = users_list[account_number_index].budget - 100000
+                    number = int(get_correct_value(f"Enter a number for Desposit(max = {max_limit}): " , is_numeric=True , max_lim=max_limit))
+                    users_list[account_number_index].budget -= number
+                    result = "Done.\n" + users_list[account_number_index].show_info()
+                else:
+                    result = "This account number does not exist!!!"
             elif inp == "6":
                 pass
             elif inp == "7":
