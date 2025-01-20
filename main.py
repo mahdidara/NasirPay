@@ -211,7 +211,15 @@ while True:
                     total += i.budget
                 result = f"Total: {total}"
             elif inp == "10":
-                pass
+                system(clearcommand)
+                print("  .:.changing a user's password.:.\n")
+                account_number_index = get_correct_value("Enter an account number for changing password: " , account_number_list , is_numeric=True , find=True)
+                if account_number_index is not False:
+                    new_pass = get_correct_value(f"Enter new password({users_list[account_number_index].password}): " , is_numeric=True)
+                    users_list[account_number_index].password = new_pass
+                    result = "Done."
+                else:
+                    result = "This account number does not exist!!!"
             elif inp == "11":
                 break
             else:
