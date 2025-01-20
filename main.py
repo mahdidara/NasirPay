@@ -138,7 +138,32 @@ while True:
                 else:
                     result = "This account number does not exist!!!"
             elif inp == "4":
-                pass
+                result = ""
+                while True:
+                    system(clearcommand)
+                    print("  .:.Searching.:.\n")
+                    menu = "1. Search by account number\n2. Search by name\n3. Back"
+                    inp = "Enter a number: "
+                    inp = print_menu(menu , inp , result)
+                    result = ""
+                    if inp == '1':
+                        account_number_index = get_correct_value("Enter an account number: " , account_number_list , is_numeric=True , find=True)
+                        if account_number_index is not False:
+                            result = users_list[account_number_index].show_info()
+                        else:
+                            result = "This account number does not exist!!!"
+                    elif inp == '2':
+                        name = input("Enter a name: ")
+                        result = ""
+                        for i in users_list:
+                            if name in i.name:
+                                result += i.show_info() + "-"*20 + "\n"
+                        if result == "":
+                            result = f"'{name}' does not exist!!!"
+                    elif inp == '3':
+                        break
+                    else:
+                        result = f"'{inp}' is not defined!!!"
             elif inp == "5":
                 pass
             elif inp == "6":
