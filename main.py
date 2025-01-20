@@ -72,14 +72,6 @@ class User:
     def check_budget(self):
         self.budget -= 1000
         return f"budget: {self.budget}"
-    def fund_transfer(self , acc , num):
-        try:
-            index = account_number_list.index(acc)
-        except:
-            return False
-        users_list[index].budget += num
-        self.budget -= num
-        return True
 
 sw = False
 while True:
