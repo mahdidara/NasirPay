@@ -85,7 +85,7 @@ sw = False
 while True:
     system(clearcommand)
     print("  .:.Welcome to NasirPay.:.\n")
-    print("  (Login page)")
+    print("  (Login page)\n")
     if sw:
         print(" !!!The username or password is incorrect!!!\n")
     sw = False
@@ -95,8 +95,7 @@ while True:
         system(clearcommand)
         result = ""
         while True:
-            print("Admin\n")
-            menu = "1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Withdraw from a user\n6. Deposit to a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
+            menu = "  Admin\n\n1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Withdraw from a user\n6. Deposit to a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
             inp = "Enter a number (1 , 11): "
             inp = print_menu(menu , inp , result)
             if inp == "1":
@@ -232,7 +231,20 @@ while True:
         if u in usernames_list:
             username_index = usernames_list.index(u)
             if users_list[username_index].password == p:
+                system(clearcommand)
+                user = users_list[username_index]
+                user_index = username_index
+                result = ""
                 while True:
-                    pass
+                    menu = f"  {user.name}\n\n1. "
+                    inp = "Enter a number (1 , 4): "
+                    inp = print_menu(menu , inp , result)
+                    if inp == '1':
+                        pass
+                    elif inp == '2':
+                        pass
+                    else:
+                        result = f"'{inp}' is not defined!!!"
+
         else:
             sw = True
