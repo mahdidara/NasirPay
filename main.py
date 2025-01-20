@@ -81,10 +81,14 @@ class User:
         self.budget -= num
         return True
 
+sw = False
 while True:
     system(clearcommand)
     print("  .:.Welcome to NasirPay.:.\n")
-    print("(Login page)")
+    print("  (Login page)")
+    if sw:
+        print(" !!!The username or password is incorrect!!!\n")
+    sw = False
     u = input("Enter your username: ")
     p = input("Enter your password: ")
     if u == 'admin' and p == 'kntu':
@@ -225,4 +229,10 @@ while True:
             else:
                 result = f"'{inp}' is not defined!!!"
     else:
-        pass
+        if u in usernames_list:
+            username_index = usernames_list.index(u)
+            if users_list[username_index].password == p:
+                while True:
+                    pass
+        else:
+            sw = True
