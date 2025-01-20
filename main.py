@@ -92,7 +92,7 @@ while True:
         result = ""
         while True:
             print("Admin\n")
-            menu = "1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Deposit to a user\n6. Withdraw from a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
+            menu = "1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Withdraw from a user\n6. Deposit to a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
             inp = "Enter a number (1 , 5): "
             inp = print_menu(menu , inp , result)
             if inp == "1":
@@ -166,17 +166,25 @@ while True:
                         result = f"'{inp}' is not defined!!!"
             elif inp == "5":
                 system(clearcommand)
-                print("  .:.Deposit to a user.:.")
-                account_number_index = get_correct_value("Enter an account number for Desposit: " , account_number_list , is_numeric=True , find=True)
+                print("  .:.Withdraw from a user.:.")
+                account_number_index = get_correct_value("Enter an account number for Withdraw: " , account_number_list , is_numeric=True , find=True)
                 if account_number_index is not False:
                     max_limit = users_list[account_number_index].budget - 100000
-                    number = int(get_correct_value(f"Enter a number for Desposit(max = {max_limit}): " , is_numeric=True , max_lim=max_limit))
+                    number = int(get_correct_value(f"Enter a number for Withdraw(max = {max_limit}): " , is_numeric=True , max_lim=max_limit))
                     users_list[account_number_index].budget -= number
                     result = "Done.\n" + users_list[account_number_index].show_info()
                 else:
                     result = "This account number does not exist!!!"
             elif inp == "6":
-                pass
+                system(clearcommand)
+                print("  .:.Deposit to a user.:.")
+                account_number_index = get_correct_value("Enter an account number for Withdraw: " , account_number_list , is_numeric=True , find=True)
+                if account_number_index is not False:
+                    number = int(get_correct_value(f"Enter a number for Desposit(min = 0): " , is_numeric=True , min_lim=0))
+                    users_list[account_number_index].budget += number
+                    result = "Done.\n" + users_list[account_number_index].show_info()
+                else:
+                    result = "This account number does not exist!!!"
             elif inp == "7":
                 pass
             elif inp == "8":
