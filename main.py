@@ -181,7 +181,7 @@ while True:
             elif inp == "10":
                 pass
             elif inp == "11":
-                pass
+                break
             else:
                 result = f"'{inp}' is not defined!!!"
     else:
