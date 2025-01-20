@@ -236,13 +236,19 @@ while True:
                 user_index = username_index
                 result = ""
                 while True:
-                    menu = f"  {user.name}\n\n1. "
-                    inp = "Enter a number (1 , 4): "
+                    menu = f"  {user.name}\n\n1. View account balance\n2. Transfer funds to another account\n3. Loan application\n4. Change password\n5. Logout"
+                    inp = "Enter a number (1 , 5): "
                     inp = print_menu(menu , inp , result)
                     if inp == '1':
-                        pass
+                        result = f"Balance: {user.budget}"
                     elif inp == '2':
                         pass
+                    elif inp == '3':
+                        pass
+                    elif inp == '4':
+                        pass
+                    elif inp == '5':
+                        break
                     else:
                         result = f"'{inp}' is not defined!!!"
 
