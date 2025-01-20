@@ -110,7 +110,19 @@ while True:
                     result = "This account number does not exist!!!"
 
             elif inp == "3":
-                pass
+                system(clearcommand)
+                print("  .:.Editing an account.:.\n")
+                account_number_index = get_correct_value("Enter an account number for edit: " , account_number_list , is_numeric=True , find=True)
+                if account_number_index is not False:
+                    user = users_list[account_number_index]
+                    users_list[account_number_index].name = get_correct_value(f"Enter a name({user.name}): ")
+                    users_list[account_number_index].username = get_correct_value(f"Enter a username({user.username}): " , usernames_list)
+                    users_list[account_number_index].password = get_correct_value(f"Enter a password({user.password}): " , is_numeric = True)
+                    users_list[account_number_index].account_number = get_correct_value(f"Enter an account number({user.account_number}): " , account_number_list , is_numeric = True)
+                    users_list[account_number_index].budget = int(get_correct_value(f"Enter a number for budget({user.budget}): " , is_numeric=True))
+                    result = "Done."
+                else:
+                    result = "This account number does not exist!!!"
             elif inp == "4":
                 pass
             elif inp == "5":
