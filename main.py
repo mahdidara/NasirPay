@@ -93,7 +93,7 @@ while True:
         while True:
             print("Admin\n")
             menu = "1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Withdraw from a user\n6. Deposit to a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
-            inp = "Enter a number (1 , 5): "
+            inp = "Enter a number (1 , 11): "
             inp = print_menu(menu , inp , result)
             if inp == "1":
                 system(clearcommand)
@@ -186,7 +186,18 @@ while True:
                 else:
                     result = "This account number does not exist!!!"
             elif inp == "7":
-                pass
+                system(clearcommand)
+                print("  .:.Fund transfer.:.\n")
+                account_number_index1 = get_correct_value("Enter the source account number: " , account_number_list , is_numeric=True , find=True)
+                account_number_index2 = get_correct_value("Enter the destination account number: " , account_number_list , is_numeric=True , find=True)
+                if (account_number_index1 is not False) and (account_number_index2 is not False):
+                    max_limit = users_list[account_number_index1].budget - 100000
+                    number = int(get_correct_value(f"Enter a number for Withdraw from '{users_list[account_number_index1].name}'(max = {max_limit}): " , is_numeric=True , max_lim=max_limit))
+                    users_list[account_number_index1].budget -= number
+                    users_list[account_number_index2].budget += number
+                    result = "Done.\n" + users_list[account_number_index1].show_info() + "\n" + users_list[account_number_index2].show_info()
+                else:
+                    result = "One of the account numbers does not exist."
             elif inp == "8":
                 system(clearcommand)
                 print("  .:.All users.:.")
