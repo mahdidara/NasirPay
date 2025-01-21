@@ -7,6 +7,7 @@ clearcommand = "clear" # if you are useing mac or linux: 'clear' / if you are us
 users_list = []
 account_number_list = [] # this list added for search easy with account numbers
 usernames_list = []
+loan_application = {}
 
 def print_menu(menu , inp , result , is_numeric = False):
     system(clearcommand)
@@ -252,12 +253,17 @@ while True:
                         else:
                             result = "This account number does not exist!!!"
                     elif inp == '3':
-                        pass
+                        system(clearcommand)
+                        print("  .:.Loan application.:.\n")
+                        load = input("Write your text for a loan application: ")
+                        loan_application[user] = load
+                        result = "Done."
                     elif inp == '4':
                         system(clearcommand)
                         print("  .:.Changing your password.:.\n")
                         new_pass = get_correct_value(f"Enter new password({user.password}): " , is_numeric=True)
                         user.password = new_pass
+                        result = 'Done.'
                     elif inp == '5':
                         break
                     else:
