@@ -254,7 +254,10 @@ while True:
                     elif inp == '3':
                         pass
                     elif inp == '4':
-                        pass
+                        system(clearcommand)
+                        print("  .:.Changing your password.:.\n")
+                        new_pass = get_correct_value(f"Enter new password({user.password}): " , is_numeric=True)
+                        user.password = new_pass
                     elif inp == '5':
                         break
                     else:
