@@ -9,7 +9,7 @@ account_number_list = [] # this list added for search easy with account numbers
 usernames_list = []
 loan_application = {}
 
-def print_menu(menu , inp , result , is_numeric = False):
+def print_menu(menu , inp , result):
     system(clearcommand)
     print("Result: ")
     print(result)
@@ -72,7 +72,7 @@ class User:
         return f"Name: {self.name}\nAccount number: {self.account_number}\nBudget: {self.budget}\n"
     def check_budget(self):
         self.budget -= 1000
-        return f"budget: {self.budget}"
+        return f"Budget: {self.budget}"
 
 sw = False
 while True:
@@ -241,11 +241,11 @@ while True:
                 user_index = username_index
                 result = ""
                 while True:
-                    menu = f"  {user.name}\n\n1. View account balance\n2. Transfer funds to another account\n3. Loan application\n4. Change password\n5. Logout"
+                    menu = f"  {user.name}\n\n1. View account balance(-1000)\n2. Transfer funds to another account\n3. Loan application\n4. Change password\n5. Logout"
                     inp = "Enter a number (1 , 5): "
                     inp = print_menu(menu , inp , result)
                     if inp == '1':
-                        result = f"Balance: {user.budget}"
+                        result = user.check_budget()
                     elif inp == '2':
                         system(clearcommand)
                         print("  .:.Transfer funds to another account.:.")
