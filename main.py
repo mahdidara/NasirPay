@@ -88,8 +88,8 @@ while True:
         system(clearcommand)
         result = ""
         while True:
-            menu = "  Admin\n\n1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Withdraw from a user\n6. Deposit to a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Logout"
-            inp = "Enter a number (1 , 11): "
+            menu = "  Admin\n\n1. Add a user\n2. remove a user\n3. Edit a user\n4. Search a user(by account number or by name)\n5. Withdraw from a user\n6. Deposit to a user\n7. Fund transfer\n8. Reporting all information\n9. Total bank balance\n10. changing a user's password\n11. Show all load application\n12. Logout"
+            inp = "Enter a number (1 , 12): "
             inp = print_menu(menu , inp , result)
             if inp == "1":
                 system(clearcommand)
@@ -223,6 +223,12 @@ while True:
                 else:
                     result = "This account number does not exist!!!"
             elif inp == "11":
+                result = ""
+                for i , j in loan_application.items():
+                    result += f"{i.name}: {j}\n"
+                if result == "":
+                    result = "There are no loan applications."
+            elif inp == "12":
                 break
             else:
                 result = f"'{inp}' is not defined!!!"
